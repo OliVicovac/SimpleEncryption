@@ -10,6 +10,8 @@ Welcome to Threading Simple-Encryption's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   crypt
+   simpleencrypter
 
 
 Indices and tables
