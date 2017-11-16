@@ -12,25 +12,35 @@ import threading
 
 class SimpleEncrypter(threading.Thread):
 
+    dictionary = {}
+    distance = 0
+    decryption = False
+    message = ""
+
     def __init__(self, firstIndex, offset):
-        pass
+        threading.Thread.__init__(self)
+        self.firstIndex = firstIndex
+        self.offset = offset
 
     @staticmethod
-    def setCryptography(dic1, distance=0, decryption=False): #changed parameter name dict to dic1 since dict is a reserved word
-        pass
+    def setCryptography(dic1, distance=0, decryption=False):
+        SimpleEncrypter.dictionary = dic1
+        SimpleEncrypter.distance = distance
+        SimpleEncrypter.decryption = decryption
 
     @staticmethod
     def setDecryption(enabled):
-        pass
+        SimpleEncrypter.decryption = enabled
 
     @staticmethod
     def setMessage(message):
-        pass
+        SimpleEncrypter.message = message
 
     @staticmethod
     def getMessage():
-        pass
+        return SimpleEncrypter.message
 
     def run(self):
+
         pass
 
