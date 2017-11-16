@@ -41,6 +41,16 @@ class SimpleEncrypter(threading.Thread):
         return SimpleEncrypter.message
 
     def run(self):
+        counter = self.firstIndex   #  first index (0, 1, 2, 3..)
+        end = len(SimpleEncrypter.message)     # ende ist der letze buchstaben der message
 
-        pass
+        iterable = list(SimpleEncrypter.message)    # liste
+        while counter < end:    # Solange wie der counter nicht das ende vom wort erreicht hat
+            c = iterable[counter]
+            c = SimpleEncrypter.dictionary[c]   # sucht value in dictionary mit key
+            iterable[counter] = c   # buchstabe wieder zurückschreiben
+            counter += self.offset  #  [offset] buchstaben weiter gehen
+
+        SimpleEncrypter.message = "".join(iterable)
+
 
