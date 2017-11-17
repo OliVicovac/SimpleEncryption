@@ -33,7 +33,18 @@ class Cryptography():
         self.__threadcount = threads
 
     def getEncryptedMessage(self):
-        pass
+        threads = []
+        SimpleEncrypter.setCryptography(self.__secretDictionary)
+        SimpleEncrypter.setMessage(self.__message)
+        for i in range(self.__threadcount):
+            t = SimpleEncrypter(i, self.__threadcount)
+            threads.append(t)
+            t.start()
+
+        for j in range(self.__threadcount):
+            threads[j].join()
+            encryptedM = SimpleEncrypter.getMessage()
+            return encryptedM
 
     def getDecryptedMessage(self):
         pass

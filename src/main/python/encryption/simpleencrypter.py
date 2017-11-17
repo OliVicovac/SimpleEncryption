@@ -21,6 +21,8 @@ class SimpleEncrypter(threading.Thread):
         threading.Thread.__init__(self)
         self.firstIndex = firstIndex
         self.offset = offset
+        if type(firstIndex) != int or type(offset) != int:
+            raise TypeError
 
     @staticmethod
     def setCryptography(dic1, distance=0, decryption=False):
@@ -57,13 +59,9 @@ class SimpleEncrypter(threading.Thread):
             SimpleEncrypter.message = "".join(iterable)
         else:
             for i in range(len(SimpleEncrypter.message)):       #for Schleife für jeden charakter
-                for key in SimpleEncrypter.dictionary:      #
+                for key in SimpleEncrypter.dictionary:
                     if SimpleEncrypter.dictionary[key]==list[i]:
                         list[i] = key
-
-
-
-
 
 
 
