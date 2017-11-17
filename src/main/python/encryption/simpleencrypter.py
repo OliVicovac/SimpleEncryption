@@ -21,6 +21,8 @@ class SimpleEncrypter(threading.Thread):
         threading.Thread.__init__(self)
         self.firstIndex = firstIndex
         self.offset = offset
+        if (offset < 1 or firstIndex < 0):
+            raise ValueError
         if type(firstIndex) != int or type(offset) != int:
             raise TypeError
 
@@ -45,7 +47,7 @@ class SimpleEncrypter(threading.Thread):
 
     def run(self):
         if len(SimpleEncrypter.dictionary) == 0:
-            raise(LookupError)
+            raise LookupError
         counter = self.firstIndex   #  first index (0, 1, 2, 3..)
         end = len(SimpleEncrypter.message)     # ende ist der letze buchstaben der message
         if SimpleEncrypter.decryption == False:
@@ -54,7 +56,7 @@ class SimpleEncrypter(threading.Thread):
                 c = iterable[counter]
                 c = SimpleEncrypter.dictionary[c]   # sucht value in dictionary mit key
                 iterable[counter] = c   # buchstabe wieder zurückschreiben
-                counter += self.offset  #  [offset] buchstaben weiter gehen
+                counter += self.offset #  [offset] buchstaben weiter gehen
 
             SimpleEncrypter.message = "".join(iterable)
         else:
@@ -62,6 +64,7 @@ class SimpleEncrypter(threading.Thread):
                 for key in SimpleEncrypter.dictionary:
                     if SimpleEncrypter.dictionary[key]==list[i]:
                         list[i] = key
+
 
 
 

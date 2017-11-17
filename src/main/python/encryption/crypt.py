@@ -50,9 +50,23 @@ class Cryptography():
         pass
 
 def main():
+    dict = {' ': ' ', 'A': 'V', 'B': 'J', 'C': 'Z', 'D': 'B', 'E': 'G', 'F': 'N', 'G': 'F', 'H': 'E',
+                         'I': 'P', 'J': 'L', 'K': 'I', 'L': 'T', 'M': 'M', 'N': 'X', 'O': 'D', 'P': 'W', 'Q': 'K',
+                         'R': 'Q', 'S': 'U', 'T': 'C', 'U': 'R', 'V': 'Y', 'W': 'A', 'X': 'H', 'Y': 'S', 'Z': 'O'}
+
+    bmessage = input("Nachricht eingeben")
+    threads = int(input("Threadanzahl eingeben"))
+
+
+    crypt = Cryptography(bmessage, dict, threads)
+    encryptedMessage = crypt.getEncryptedMessage()
     decryptedMessage = crypt.getDecryptedMessage()
-    print('Your decrypted message: %s' % decryptedMessage)
 
-#if  __name__ == '__main__':
-#    main()
+    print('Your decrypted message: %s' % encryptedMessage)
 
+
+
+
+
+if  __name__ == '__main__':
+    main()
