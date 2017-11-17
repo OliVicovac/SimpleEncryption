@@ -42,7 +42,8 @@ class SimpleEncrypter(threading.Thread):
         return SimpleEncrypter.message
 
     def run(self):
-
+        if len(SimpleEncrypter.dictionary) == 0:
+            raise(LookupError)
         counter = self.firstIndex   #  first index (0, 1, 2, 3..)
         end = len(SimpleEncrypter.message)     # ende ist der letze buchstaben der message
         if SimpleEncrypter.decryption == False:
